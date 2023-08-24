@@ -1,6 +1,6 @@
 <h1 align="center">
   <img src="[https://imgur.com/L54eATql.png](https://media.proprofs.com/images/QM/user_images/2503852/New%20Project%20(39)(609).jpg)">
-  <p><b>Hoyolab Auto Daily Check-in</b></p>
+  <p><b>JAVAlik kana sakin</b></p>
   <a href="https://github.com/danielnoelle"><img src="https://komarev.com/ghpvc/?username=danielnoelle&label=Profile%20views&color=0e75b6&style=flat"></a>
   <a href="[https://github.com/danielnoelle](https://github.com/python/black)"><img src="https://img.shields.io/badge/code%20style-black-1c1c1c.svg"></a>
   <a href="https://discord.gg/PrefxBBf"><img src="https://discord.com/api/guilds/616969119685935162/widget.png"></a><br>
