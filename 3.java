@@ -14,18 +14,4 @@ public class exer3 {
 			System.out.print("\n" + "The area of the rectangle is: " + (int) area + "\n" + "\n");
 			
 		}
-}\n" + "\n");
-			System.out.print("Enter 1 to run the program again. 0 if otherwise: ");
-			inp = scnr.nextInt();
-			System.out.print("\n");
-		}while(inp == 1);
-		System.out.println("Have a good day!");
-		scnr.close();
-	}
-
-}
-ay!");
-		scnr.close();
-	}
-
 }
