@@ -4,25 +4,31 @@ public class question_8 {
     
     public static void main(String[] args){
 
-        Scanner scnr = new Scanner(System.in);
-		int inp1, inp2, inp3;
-		
-			
-			System.out.print("Enter a number: ");
-			inp1 = scnr.nextInt();
-			System.out.print("Enter a number again: ");
-			inp2 = scnr.nextInt();
-			System.out.print("Enter a number one more time: ");
-			inp3 = scnr.nextInt();
-			
-			if ((inp1 == inp2) && (inp1 == inp3) && (inp2 == inp3)) {
-				System.out.println("\n" + "All are equal." + "\n");
-			} else if ((inp1 == inp2) || (inp1 == inp3) || (inp2 == inp3)) {
-				System.out.println("\n" + "Any of two are equal." + "\n");
-			} else {
-				System.out.println("\n" + "None are equal." + "\n");
-			}
+        Scanner scanner = new Scanner(System.in);
 
+        System.out.println("Enter the first input: ");
+        int first_input;
+        first_input = scanner.nextInt();
 
+        System.out.println("Enter the second input: ");
+        int cin_input;
+        cin_input = scanner.nextInt();
+
+        System.out.println("Enter the third input: ");
+        int input_input;
+        input_input = scanner.nextInt();
+
+        boolean allTrue = first_input == cin_input && first_input == input_input;
+        boolean twoEqual = first_input == cin_input || cin_input == input_input || first_input == input_input;
+
+        if(allTrue){
+            System.out.println("All inputs are EQUAL");
+        }else if(twoEqual){
+            System.out.println("Two inputs are EQUAl");
+        }else{
+            System.out.println("None of the inputs are EQUAL");
+        }
+
+        scanner.close();
     }
 }
