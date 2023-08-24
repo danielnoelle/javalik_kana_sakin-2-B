@@ -18,8 +18,4 @@ public class exer4 {
 			System.out.println("\n" + "Hey, my name is " + name + " and my roll number is " + rollNum + ". My field of interest are " + foi + ".");
 	}
 
-}
-est are " + foi + ".");
-	}
-
-}
+}
