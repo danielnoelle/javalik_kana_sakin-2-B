@@ -5,7 +5,7 @@ public class question_8 {
     public static void main(String[] args){
 
         Scanner scnr = new Scanner(System.in);
-		int inp1, inp2, inp3, ans;
+		int inp1, inp2, inp3;
 		
 			
 			System.out.print("Enter a number: ");
