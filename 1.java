@@ -11,25 +11,8 @@ public class exer1 {
 			System.out.print("Enter another integer: ");
 			num2 = scnr.nextInt();
 			System.out.print("\n" + num1 + " + " + num2 + " = ");
-			System.out.println(num1 + num2);
-			System.out.print("\n" + "Enter 1 to run the program again. 0 if otherwise: ");
-			inp = scnr.nextInt();
+			System.out.println(num1 + num2);
 
-	}
-
-}
-
-}
-		} while(inp == 1);
-		System.out.println("Have a good day!");
-		scnr.close();
-
-	}
-
-}
-);
-		scnr.close();
-
-	}
+    }
 
 }
