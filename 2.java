@@ -16,20 +16,5 @@ public class exer2 {
 
 	}
 
-}"\n");
-			System.out.print("Enter 1 to run the program again. 0 if otherwise: ");
-			inp = scnr.nextInt();
-			System.out.print("\n");
-		} while(inp == 1);
-		System.out.println("Have a good day!");
-		scnr.close();
-
-	}
-
 }
-!");
-		scnr.close();
 
-	}
-
-}
