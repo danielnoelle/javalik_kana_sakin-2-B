@@ -13,19 +13,4 @@ public class exer5 {
 			System.out.println("Perimeter: " + perimeter);
 	}
 
-}
-eter);
-			System.out.print("Enter 1 to run the program again. 0 if otherwise: ");
-			inp = scnr.nextInt();
-			System.out.print("\n");
-		}while(inp == 1);
-		System.out.println("Have a good day!");
-		scnr.close();
-	}
-
-}
-ay!");
-		scnr.close();
-	}
-
-}
+}
