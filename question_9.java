@@ -20,13 +20,8 @@ public class question_9 {
         boolean less = a < 50;
         boolean lesser = a < b;
 
-        if(less){
-            System.out.println("TRUE");
-        }else if(lesser){
-            System.out.println("TRUE");
-        }else{
-            System.out.println("FALSE");
-        }
+        System.out.println(less);
+        System.out.println(lesser);
 
         scanner.close();
     }
