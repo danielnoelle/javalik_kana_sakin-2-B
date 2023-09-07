@@ -22,7 +22,7 @@ public class Main {
 		            System.out.print("\nEnter an integer between 1 - 7: ");
 		            num = scnr.nextInt();
 		        } catch (InputMismatchException e) {
-		            System.out.println("\nThat is an integer.");
+		            System.out.println("\nThat is not an integer.");
 		            scnr.nextLine();
 		            System.out.println("Please try again." + "\n");
 		            continue;
