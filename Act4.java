@@ -1,7 +1,9 @@
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
+		
 		Scanner scnr = new Scanner(System.in);
 		double num, million = 1000000.0, negativeMillion = -1000000.0;
 		boolean doLoop = true;
@@ -16,8 +18,15 @@ public class Main {
 		    
 		    if (answer.equals ("RUN")) {
 		        
-		        System.out.print("\nEnter a number: ");
-		        num = scnr.nextDouble();
+		        try {
+		            System.out.print("\nEnter a number: ");
+		            num = scnr.nextDouble();
+		        } catch (InputMismatchException e) {
+		            System.out.println("\nThat is not a number.");
+		            scnr.nextLine();
+		            System.out.println("Try again." + "\n");
+		            continue;
+		        }
 		        
 		        if (num < 1 && num > 0) {
 		            
@@ -62,7 +71,7 @@ public class Main {
 		            System.out.println("It is a negative large number." + "\n");
 		            scnr.nextLine();
 		            
-		        }  
+		        } 
 		    } else if (answer.equals("STOP")) {
 		        System.out.println("\nThank you for using our program." + "\nHave a good day!" + "\n");
 		        break;
