@@ -113,7 +113,7 @@ public class Midterm_Project {
 					userCount++; // Iterates the variable.
 
 					System.out.println("\nRegistered successfully. \nPlease proceed to login.");
-					balanceOfUsers.putIfAbsent(username, 0.0); // Puts the data, if absent, to the balanceOfUsers map.
+					balanceOfUsers.put(username, 0.0); // Puts the data to the balanceOfUsers map.
 					return; // Terminates the method
 				}
 			} else {
