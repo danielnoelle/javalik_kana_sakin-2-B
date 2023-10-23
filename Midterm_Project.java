@@ -386,16 +386,16 @@ public class Midterm_Project {
 			System.out.print("Enter target's username: ");
 			target = scan.nextLine();
 
-			boolean targetUserFound = false;
+			boolean targetUserNotFound = true;
 
 			for (int i = 0; i < userCount; i++) {
 				if (target.equalsIgnoreCase(userCredentials[i][0])) {
-					targetUserFound = true;
+					targetUserNotFound = false;
 					break;
 				}
 			}
 
-			if (!targetUserFound) {
+			if (targetUserNotFound) {
 				System.out.println("\n" + target + " is not found.");
 				System.out.print("\nWould you like to try again? \nY if yes: ");
 
