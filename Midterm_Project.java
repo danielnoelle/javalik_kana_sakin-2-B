@@ -355,8 +355,10 @@ public class Midterm_Project {
 		transactionHistory.add("Deposit: " + amount);
 		// Adds the transaction to the list with concatenated amount variable.
 
-		System.out.println("\nAmount deposited: " + amount);
+		System.out.println("\nAmount Deposited: " + amount);
 		// Informs the user of the amount deposited.
+		System.out.println("New Balance: " + balance);
+		// Informs the user of the new balance.
 
 	}
 
@@ -393,14 +395,16 @@ public class Midterm_Project {
 		balanceOfUsers.put(username, balance);
 		transactionHistory.add("Withdraw: " + amount);
 
-		System.out.println("\nAmount withdrawn: " + amount);
+		System.out.println("\nAmount Withdrawn: " + amount);
+		System.out.println("New Balance: " + balance);
+		// Informs the user of the new balance.
 
 	}
 
 	public static void checkBalance() { // Displays the balance of the current user.
 
 		clearConsole();
-		System.out.println("Your balance: " + balance);
+		System.out.println("Your Balance: " + balance);
 
 	}
 
@@ -492,9 +496,9 @@ public class Midterm_Project {
 			balanceOfUsers.put(target, targetBalance);
 			transactionHistory.add("Sent " + amount + " to " + target + "."); // Adds the transaction to the list.
 			System.out.println("\nSuccessful transfer!");
-			System.out.println("User selected: " + target);
-			System.out.println("Amount transferred: " + amount);
-			System.out.println("Balance remaining: " + balance);
+			System.out.println("User Selected: " + target);
+			System.out.println("Amount Transferred: " + amount);
+			System.out.println("New Balance: " + balance);
 			// Informs the user about the operation.
 
 			System.out.print("\nWould you like to transfer to another user? \nY if yes: ");
