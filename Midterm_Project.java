@@ -348,7 +348,7 @@ public class Midterm_Project {
 			}
 		}
 
-		balance += amount; // Adding the amount to the user's balance'
+		balance += amount; // Adding the amount to the user's balance.
 		balanceOfUsers.put(username, balance); // Adds the user to the hashmap using 'put()' since the username
 		// is fixed for now, and it's a straightforward way to add a new entry.
 
