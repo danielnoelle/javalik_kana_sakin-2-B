@@ -220,15 +220,15 @@ public class Midterm_Project {
 				}
 				break;
 			case 2:
-			
-			    if (balance < 100) {
-			        // If the user has a balance less than 100PHP, 
-			        // prevents the user to perform an operation.
-			        clearConsole();
-			        System.out.println("\nBalance is below 100PHP. \nPlease deposit first.");
-			        continue;
-			    }
-			    
+
+				if (balance < 100) {
+					// If the user has a balance less than 100PHP,
+					// prevents the user to perform an operation.
+					clearConsole();
+					System.out.println("\nBalance is below 100PHP. \nPlease deposit first.");
+					continue;
+				}
+
 				System.out.println("\nWithdraw Amount?");
 				System.out.print("Y/N: ");
 				answer = scan.nextLine();
@@ -244,13 +244,13 @@ public class Midterm_Project {
 				checkBalance();
 				break;
 			case 4:
-			    
-			    if (balance < 100) {
-			        clearConsole();
-			        System.out.println("\nBalance is below 100PHP. \nPlease deposit first.");
-			        continue;
-			    }
-			    
+
+				if (balance < 100) {
+					clearConsole();
+					System.out.println("\nBalance is below 100PHP. \nPlease deposit first.");
+					continue;
+				}
+
 				System.out.println("\nSend Money?");
 				System.out.print("Y/N: ");
 				answer = scan.nextLine();
@@ -323,9 +323,10 @@ public class Midterm_Project {
 		// it is used for storing the operations the user performed.
 
 		double amount = 0; // Used to store user input which is then added to the balance of the user.
-
+        clearConsole();
+        
 		while (true) {
-			clearConsole();
+			
 			System.out.print("Minimum amount to deposit is 100PHP. \nEnter amount to deposit: ");
 
 			try {
@@ -365,9 +366,10 @@ public class Midterm_Project {
 	public static void withdrawMoney(ArrayList<String> transactionHistory) {
 
 		double amount = 0;
+        clearConsole();
 
 		while (true) {
-			clearConsole();
+
 			System.out.print("Minimum amount to withdraw is 100PHP. \nEnter amount to withdraw: ");
 
 			try {
@@ -376,6 +378,10 @@ public class Midterm_Project {
 
 				if (amount < 100) {
 					System.out.println("\nIvalid amount input! Please try again.");
+					System.out.println();
+					continue;
+				} else if (amount > balance) {
+					System.out.println("\nAmount entered is greater than your balance! \nPlease try again.");
 					System.out.println();
 					continue;
 				} else {
@@ -474,6 +480,10 @@ public class Midterm_Project {
 
 					if (amount < 100) {
 						System.out.println("\nInvalid amount input! Please try again.");
+						System.out.println();
+						continue;
+					} else if (amount > balance) {
+						System.out.println("\nAmount entered is greater than your balance! \nPlease try again.");
 						System.out.println();
 						continue;
 					} else {
