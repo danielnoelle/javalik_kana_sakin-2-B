@@ -534,7 +534,7 @@ public class Midterm_Project {
 			if (userCredentials[i][0].equals(username)) {
 				// If the value of index i is equal to username, updates
 				// the user's password stored in the second dimension
-				// of the current index.'
+				// of the current index.
 				userCredentials[i][1] = newPin;
 				System.out.println("\nPIN changed successfully.");
 				return;
