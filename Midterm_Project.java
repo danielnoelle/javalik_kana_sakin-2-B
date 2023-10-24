@@ -1,6 +1,8 @@
 package oOP.midterm;
 
 import java.util.*; // It allows us to access all the classes and utilities within the java.util package.
+import java.time.*;
+import java.time.format.DateTimeFormatter;
 
 public class Midterm_Project {
 
@@ -185,6 +187,7 @@ public class Midterm_Project {
 		balance = balanceOfUsers.getOrDefault(username, 0.0); // When the method is ran, the balance of the user is
 		// retrieved from the map and stores it to balance
 		// variable.
+		
 		ArrayList<String> transactionHistory = new ArrayList<>();        // This list holds the data of recent transactions of the user.
 
 		accountMenu:
@@ -322,7 +325,15 @@ public class Midterm_Project {
 	public static void depositMoney(ArrayList<String> transactionHistory) { // The method has an array list parameter
 		// it is used for storing the operations the user performed.
 
+		LocalDateTime date = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM");
+		DateTimeFormatter formatterOfTime = DateTimeFormatter.ofPattern("HH:mm:ss");
 		double amount = 0; // Used to store user input which is then added to the balance of the user.
+		int year = date.getYear();
+		String month = date.format(formatter);
+		int day = date.getDayOfMonth();
+		String time = date.format(formatterOfTime);
+		
         clearConsole();
         
 		while (true) {
@@ -353,7 +364,8 @@ public class Midterm_Project {
 		balanceOfUsers.put(username, balance); // Adds the user to the hashmap using 'put()' since the username
 		// is fixed for now, and it's a straightforward way to add a new entry.
 
-		transactionHistory.add("Deposit: " + amount);
+		transactionHistory.add("Deposit: " + amount + " - " + month + " " + day + ", " + year +
+				" " + time);
 		// Adds the transaction to the list with concatenated amount variable.
 
 		System.out.println("\nAmount Deposited: " + amount);
@@ -365,7 +377,15 @@ public class Midterm_Project {
 
 	public static void withdrawMoney(ArrayList<String> transactionHistory) {
 
+		LocalDateTime date = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM");
+		DateTimeFormatter formatterOfTime = DateTimeFormatter.ofPattern("HH:mm:ss");
 		double amount = 0;
+		int year = date.getYear();
+		String month = date.format(formatter);
+		int day = date.getDayOfMonth();
+		String time = date.format(formatterOfTime);
+		
         clearConsole();
 
 		while (true) {
@@ -399,9 +419,10 @@ public class Midterm_Project {
 		balance -= amount;
 		// Decreasing the amount from the user's balance
 		balanceOfUsers.put(username, balance);
-		transactionHistory.add("Withdraw: " + amount);
+		transactionHistory.add("Withdraw: " + amount + " - " + month + " " + day + ", " + year +
+				" " + time);
 
-		System.out.println("\nAmount Withdrawn: " + amount);
+		System.out.println("\nAmount Withdrawn: " + amount);;
 		System.out.println("New Balance: " + balance);
 		// Informs the user of the new balance.
 
@@ -418,7 +439,14 @@ public class Midterm_Project {
 		double amount = 0;
 		String target; // It stores the user's target for transferring money.
 
+		LocalDateTime date = LocalDateTime.now();
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM");
+		DateTimeFormatter formatterOfTime = DateTimeFormatter.ofPattern("HH:mm:ss");
 		clearConsole();
+		int year = date.getYear();
+		String month = date.format(formatter);
+		int day = date.getDayOfMonth();
+		String time = date.format(formatterOfTime);
 
 		transferMenu:
 		while (true) {
@@ -504,7 +532,8 @@ public class Midterm_Project {
 			// Updates the balances of each users.
 			balanceOfUsers.put(username, balance);
 			balanceOfUsers.put(target, targetBalance);
-			transactionHistory.add("Sent " + amount + " to " + target + "."); // Adds the transaction to the list.
+			transactionHistory.add("Sent " + amount + " to " + target + " - " + month + " " + day + ", " + year +
+					" " + time); // Adds the transaction to the list.
 			System.out.println("\nSuccessful transfer!");
 			System.out.println("User Selected: " + target);
 			System.out.println("Amount Transferred: " + amount);
