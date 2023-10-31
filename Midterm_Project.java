@@ -3,6 +3,7 @@ package oOP.midterm;
 import java.util.*; // It allows us to access all the classes and utilities within the java.util package.
 import java.time.*;
 import java.time.format.DateTimeFormatter;
+import java.math.*;
 
 public class Midterm_Project {
 
@@ -28,8 +29,7 @@ public class Midterm_Project {
 		// Loops infinitely so that user could repeat the program as they want.
 		// The "logInMenu" is a label that can be used to control where the "break" and
 		// "continue" statements' jump.
-		logInMenu:
-		while (true) {
+		logInMenu: while (true) {
 			displayLoginOptionMenu(); // Displays the log-in menu.
 			System.out.print("\nEnter your choice here: ");
 
@@ -46,7 +46,10 @@ public class Midterm_Project {
 				scan.nextLine();
 				clearConsole();
 			} catch (InputMismatchException e) {
-				System.out.println("\nInput is not present among the choices. Please try again"); // Runs if an exception is thrown by "try" block.
+				System.out.println("\nInput is not present among the choices. Please try again"); // Runs if an
+																									// exception is
+																									// thrown by "try"
+																									// block.
 				scan.nextLine(); // Consumes the newline character left by previous input methods.
 				continue; // Jumps back to the loop.
 			}
@@ -68,7 +71,7 @@ public class Midterm_Project {
 				System.out.print("\nAre you sure?");
 				System.out.print("Y/N: ");
 				answer = scan.nextLine();
-				answer = answer.replaceAll("\\s", ""); // Replaces all whitespaces into an empty character.
+				answer = answer.trim(); // Replaces all whitespaces into an empty character.
 
 				if (answer.equalsIgnoreCase("Y")) {
 					clearConsole();
@@ -77,7 +80,8 @@ public class Midterm_Project {
 					continue;
 				}
 			default:
-				System.out.println("\nInput is not present among the choices. Please try again"); // If the "choice" variable
+				System.out.println("\nInput is not present among the choices. Please try again"); // If the "choice"
+																									// variable
 				// doesn't meet the value of the cases above,
 				// the program prints it out.
 				continue; // Jumps back to the loop.
@@ -97,8 +101,10 @@ public class Midterm_Project {
 			if (userCount < MAX_USERS) { // Runs the code block if the userCount variable is less than MAX_USERS.
 				System.out.print("Enter your username: ");
 				username = scan.nextLine();
+				username = username.trim();
 				System.out.print("Enter your password: ");
 				password = scan.nextLine();
+				password = password.trim();
 
 				if (isUsernameTaken(username)) { // If the username is taken, it prevents the user to use that same
 					// username.
@@ -130,8 +136,10 @@ public class Midterm_Project {
 
 		System.out.print("Enter your username: ");
 		username = scan.nextLine();
+		username = username.trim();
 		System.out.print("Enter your password: ");
 		password = scan.nextLine();
+		password = password.trim();
 
 		for (int i = 0; i < userCount; i++) { // Loops through each indices of the array.
 			if (userCredentials[i][0].equals(username) && userCredentials[i][1].equals(password)) { // If the username
@@ -144,13 +152,13 @@ public class Midterm_Project {
 				// of i, allows the
 				// user to login.
 				System.out.println("\nLogin successful.");
-				getATM(); // Executes the getATM() method.
+				runATM(); // Executes the getATM() method.
 				return; // Exits the method once the user returns from the getATM() method.
 			}
 		}
 
 		System.out.println(
-			"\nLogin failed. \nPlease check your username and password. \nSign up first if you don't have an account."); // Failed
+				"\nLogin failed. \nPlease check your username and password. \nSign up first if you don't have an account."); // Failed
 		// login
 		// notice.
 
@@ -174,24 +182,28 @@ public class Midterm_Project {
 
 		// Method for displaying the menu
 
-		System.out.println("\nSelect from the choices below: ");
-		System.out.println("__________*()*__________");
-		System.out.println("|                      |");
-		System.out.println("| 1 - Login            |\n| 2 - Sign Up          |\n| 3 - Exit             |");
-		System.out.println("------------------------");
+		System.out.println("\nSelect from the choices below:");
+		System.out.println("***************************");
+		System.out.println("|                         |");
+		System.out.println("| 1 - Login               |");
+		System.out.println("| 2 - Sign Up             |");
+		System.out.println("| 3 - Exit                |");
+		System.out.println("|                         |");
+		System.out.println("***************************");
 
 	}
 
-	public static void getATM() {
+	public static void runATM() {
 
 		balance = balanceOfUsers.getOrDefault(username, 0.0); // When the method is ran, the balance of the user is
 		// retrieved from the map and stores it to balance
 		// variable.
-		
-		ArrayList<String> transactionHistory = new ArrayList<>();        // This list holds the data of recent transactions of the user.
 
-		accountMenu:
-		while (true) { // Constant looping with label for loop-jumping.
+		LinkedList<String> transactionHistory = new LinkedList<>(); // This list holds the data of recent transactions
+																	// of
+																	// the user.
+
+		accountMenu: while (true) { // Constant looping with label for loop-jumping.
 
 			System.out.println();
 			System.out.println("Current User: " + username); // Displays the active user.
@@ -214,7 +226,7 @@ public class Midterm_Project {
 				System.out.println("\nDeposit Amount?");
 				System.out.print("Y/N: ");
 				answer = scan.nextLine();
-				answer = answer.replaceAll("\\s", "");
+				answer = answer.trim();
 
 				if (answer.equalsIgnoreCase("Y")) {
 					depositMoney(transactionHistory);
@@ -228,14 +240,14 @@ public class Midterm_Project {
 					// If the user has a balance less than 100PHP,
 					// prevents the user to perform an operation.
 					clearConsole();
-					System.out.println("\nBalance is below 100PHP. \nPlease deposit first.");
+					System.out.println("\nBalance is below ₱100. \nPlease deposit first.");
 					continue;
 				}
 
 				System.out.println("\nWithdraw Amount?");
 				System.out.print("Y/N: ");
 				answer = scan.nextLine();
-				answer = answer.replaceAll("\\s", "");
+				answer = answer.trim();
 
 				if (answer.equalsIgnoreCase("Y")) {
 					withdrawMoney(transactionHistory);
@@ -250,14 +262,14 @@ public class Midterm_Project {
 
 				if (balance < 100) {
 					clearConsole();
-					System.out.println("\nBalance is below 100PHP. \nPlease deposit first.");
+					System.out.println("\nBalance is below ₱100. \nPlease deposit first.");
 					continue;
 				}
 
 				System.out.println("\nSend Money?");
 				System.out.print("Y/N: ");
 				answer = scan.nextLine();
-				answer = answer.replaceAll("\\s", "");
+				answer = answer.trim();
 
 				if (answer.equalsIgnoreCase("Y")) {
 					transferMoney(transactionHistory);
@@ -269,7 +281,7 @@ public class Midterm_Project {
 				System.out.println("\nView Transactions?");
 				System.out.print("Y/N: ");
 				answer = scan.nextLine();
-				answer = answer.replaceAll("\\s", "");
+				answer = answer.trim();
 
 				if (answer.equalsIgnoreCase("Y")) {
 					viewTransactionHistory(transactionHistory);
@@ -281,7 +293,7 @@ public class Midterm_Project {
 				System.out.println("\nChange PIN?");
 				System.out.print("Y/N: ");
 				answer = scan.nextLine();
-				answer = answer.replaceAll("\\s", "");
+				answer = answer.trim();
 
 				if (answer.equalsIgnoreCase("Y")) {
 					changePin(username);
@@ -293,7 +305,7 @@ public class Midterm_Project {
 				System.out.print("\nAre you sure?");
 				System.out.print("Y/N: ");
 				answer = scan.nextLine();
-				answer = answer.replaceAll("\\s", "");
+				answer = answer.trim();
 
 				if (answer.equalsIgnoreCase("Y")) {
 					clearConsole();
@@ -311,40 +323,46 @@ public class Midterm_Project {
 
 	public static void displayAccountMenu() {
 
-		// Method for displaying menu for the users to choose which operation/s they want to perform.
+		// Method for displaying menu for the users to choose which operation/s they
+		// want to perform.
 
-		System.out.println("\nWhat would you like to do? ");
-		System.out.println("__________*()*_____________");
+		System.out.println("\nWhat would you like to do?");
+		System.out.println("***************************");
 		System.out.println("|                         |");
-		System.out.println(
-			"| 1 - Deposit             |\n| 2 - Withdraw            |\n| 3 - Check Balance       | \n| 4 - Send Money          |\n| 5 - View Transactions   |\n| 6 - Change PIN          |\n| 7 - Log Out             |");
-		System.out.println("---------------------------");
+		System.out.println("| 1 - Deposit             |");
+		System.out.println("| 2 - Withdraw            |");
+		System.out.println("| 3 - Check Balance       |");
+		System.out.println("| 4 - Send Money          |");
+		System.out.println("| 5 - View Transactions   |");
+		System.out.println("| 6 - Change PIN          |");
+		System.out.println("| 7 - Log Out             |");
+		System.out.println("|                         |");
+		System.out.println("***************************");
 
 	}
 
-	public static void depositMoney(ArrayList<String> transactionHistory) { // The method has an array list parameter
+	public static void depositMoney(LinkedList<String> transactionHistory) { // The method has an array list parameter
 		// it is used for storing the operations the user performed.
 
 		LocalDateTime date = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM");
-		DateTimeFormatter formatterOfTime = DateTimeFormatter.ofPattern("HH:mm:ss");
 		double amount = 0; // Used to store user input which is then added to the balance of the user.
-		int year = date.getYear();
-		String month = date.format(formatter);
-		int day = date.getDayOfMonth();
-		String time = date.format(formatterOfTime);
-		
-        clearConsole();
-        
+		int year = getCurrentYear(date);
+		String month = getFormattedMonth(date);
+		int day = getCurrentDay(date);
+		String time = getFormattedTime(date);
+
+		clearConsole();
+
 		while (true) {
-			
-			System.out.print("Minimum amount to deposit is 100PHP. \nEnter amount to deposit: ");
+
+			System.out.print("Minimum amount to deposit is ₱100. \nEnter amount to deposit: ₱");
 
 			try {
 				amount = scan.nextDouble();
 				scan.nextLine();
 
-				if (amount < 100) { // If amount entered is less than 100, prevents the user to perform an operation.
+				if (amount < 100) { // If amount entered is less than 100, prevents the user to perform an
+									// operation.
 					System.out.println("\nIvalid input amount! Please try again.");
 					System.out.println();
 					continue; // Restarts the loop
@@ -363,34 +381,32 @@ public class Midterm_Project {
 		balance += amount; // Adding the amount to the user's balance.
 		balanceOfUsers.put(username, balance); // Adds the user to the hashmap using 'put()' since the username
 		// is fixed for now, and it's a straightforward way to add a new entry.
-
-		transactionHistory.add("Deposit: " + amount + " - " + month + " " + day + ", " + year +
-				" " + time);
+		transactionHistory
+				.add("Deposit: ₱" + getRoundedValue(amount) + " - " + month + " " + day + ", " + year + " " + time);
 		// Adds the transaction to the list with concatenated amount variable.
 
-		System.out.println("\nAmount Deposited: " + amount);
+		System.out.println("\nAmount Deposited: ₱" + getRoundedValue(amount));
 		// Informs the user of the amount deposited.
-		System.out.println("New Balance: " + balance);
+		System.out.println("New Balance: ₱" + getRoundedValue(balance));
 		// Informs the user of the new balance.
 
 	}
 
-	public static void withdrawMoney(ArrayList<String> transactionHistory) {
+	public static void withdrawMoney(LinkedList<String> transactionHistory) {
 
 		LocalDateTime date = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM");
-		DateTimeFormatter formatterOfTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+
 		double amount = 0;
-		int year = date.getYear();
-		String month = date.format(formatter);
-		int day = date.getDayOfMonth();
-		String time = date.format(formatterOfTime);
-		
-        clearConsole();
+		int year = getCurrentYear(date);
+		String month = getFormattedMonth(date);
+		int day = getCurrentDay(date);
+		String time = getFormattedTime(date);
+
+		clearConsole();
 
 		while (true) {
 
-			System.out.print("Minimum amount to withdraw is 100PHP. \nEnter amount to withdraw: ");
+			System.out.print("Minimum amount to withdraw is ₱100. \nEnter amount to withdraw: ₱");
 
 			try {
 				amount = scan.nextDouble();
@@ -419,11 +435,11 @@ public class Midterm_Project {
 		balance -= amount;
 		// Decreasing the amount from the user's balance
 		balanceOfUsers.put(username, balance);
-		transactionHistory.add("Withdraw: " + amount + " - " + month + " " + day + ", " + year +
-				" " + time);
+		transactionHistory
+				.add("Withdraw: ₱" + getRoundedValue(amount) + " - " + month + " " + day + ", " + year + " " + time);
 
-		System.out.println("\nAmount Withdrawn: " + amount);;
-		System.out.println("New Balance: " + balance);
+		System.out.println("\nAmount Withdrawn: ₱" + getRoundedValue(amount));
+		System.out.println("New Balance: ₱" + getRoundedValue(balance));
 		// Informs the user of the new balance.
 
 	}
@@ -431,34 +447,35 @@ public class Midterm_Project {
 	public static void checkBalance() { // Displays the balance of the current user.
 
 		clearConsole();
-		System.out.println("Your Balance: " + balance);
+		System.out.println("Your Balance: ₱" + getRoundedValue(balance));
 
 	}
 
-	public static void transferMoney(ArrayList<String> transactionHistory) {
+	public static void transferMoney(LinkedList<String> transactionHistory) {
+
 		double amount = 0;
 		String target; // It stores the user's target for transferring money.
 
 		LocalDateTime date = LocalDateTime.now();
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM");
-		DateTimeFormatter formatterOfTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+		
 		clearConsole();
-		int year = date.getYear();
-		String month = date.format(formatter);
-		int day = date.getDayOfMonth();
-		String time = date.format(formatterOfTime);
+		int year = getCurrentYear(date);
+		String month = getFormattedMonth(date);
+		int day = getCurrentDay(date);
+		String time = getFormattedTime(date);
 
-		transferMenu:
-		while (true) {
+		transferMenu: while (true) {
 			System.out.print("Enter target's username: ");
 			target = scan.nextLine();
+			target = target.trim();
 			System.out.println();
 
 			boolean isTargetUserNotFound = true;
 			// A boolean flag with 'false' as initial value
 
 			for (int i = 0; i < userCount; i++) { // Loops through the array
-				if (target.equalsIgnoreCase(userCredentials[i][0])) { // If target user is found, it updates the value of targetUserFound to true.
+				if (target.equalsIgnoreCase(userCredentials[i][0])) { // If target user is found, it updates the value
+																		// of targetUserFound to true.
 					isTargetUserNotFound = false;
 					break;
 				}
@@ -471,7 +488,7 @@ public class Midterm_Project {
 				System.out.print("\nWould you like to try again? \nY if yes: ");
 
 				answer = scan.nextLine();
-				answer = answer.replaceAll("\\s", "");
+				answer = answer.trim();
 
 				if (answer.equalsIgnoreCase("Y")) {
 					System.out.println();
@@ -500,8 +517,8 @@ public class Midterm_Project {
 					}
 				}
 
-				System.out.print(
-					"Minimum amount to send is 100PHP. \nEnter amount to be transferred to " + target + ": ");
+				System.out
+						.print("Minimum amount to send is ₱100. \nEnter amount to be transferred to " + target + ": ₱");
 				try {
 					amount = scan.nextDouble();
 					scan.nextLine();
@@ -526,23 +543,24 @@ public class Midterm_Project {
 			}
 
 			balance -= amount; // Deducts the balance with the value of the amount variable
-			double targetBalance = balanceOfUsers.getOrDefault(target, 0.0); // Creates a variable to store the balance of the target
+			double targetBalance = balanceOfUsers.getOrDefault(target, 0.0); // Creates a variable to store the balance
+																				// of the target
 			// using the target as the key
 			targetBalance += amount; // Adds the value of amount variable to the targetBalance variable.
 			// Updates the balances of each users.
 			balanceOfUsers.put(username, balance);
 			balanceOfUsers.put(target, targetBalance);
-			transactionHistory.add("Sent " + amount + " to " + target + " - " + month + " " + day + ", " + year +
-					" " + time); // Adds the transaction to the list.
+			transactionHistory.add("Sent ₱" + getRoundedValue(amount) + " to " + target + " - " + month + " " + day
+					+ ", " + year + " " + time); // Adds the transaction to the list.
 			System.out.println("\nSuccessful transfer!");
 			System.out.println("User Selected: " + target);
-			System.out.println("Amount Transferred: " + amount);
-			System.out.println("New Balance: " + balance);
+			System.out.println("Amount Transferred: ₱" + getRoundedValue(amount));
+			System.out.println("New Balance: ₱" + getRoundedValue(balance));
 			// Informs the user about the operation.
 
 			System.out.print("\nWould you like to transfer to another user? \nY if yes: ");
 			answer = scan.nextLine();
-			answer = answer.replaceAll("\\s", "");
+			answer = answer.trim();
 
 			if (answer.equalsIgnoreCase("Y")) {
 				System.out.println();
@@ -553,7 +571,7 @@ public class Midterm_Project {
 		}
 	}
 
-	public static void viewTransactionHistory(ArrayList<String> transactionHistory) {
+	public static void viewTransactionHistory(LinkedList<String> transactionHistory) {
 
 		clearConsole();
 		if (transactionHistory.isEmpty()) {
@@ -571,6 +589,7 @@ public class Midterm_Project {
 		clearConsole();
 		System.out.print("Enter your new PIN: ");
 		String newPin = scan.nextLine();
+		newPin = newPin.trim();
 
 		for (int i = 0; i < userCount; i++) {
 			// Loops through the array
@@ -594,7 +613,8 @@ public class Midterm_Project {
 
 			if (os.contains("win")) {
 				// If the operating system is Windows:
-				// Create a ProcessBuilder for the "cmd" shell, and execute the "cls" command to clear the console.
+				// Create a ProcessBuilder for the "cmd" shell, and execute the "cls" command to
+				// clear the console.
 				ProcessBuilder processBuilder = new ProcessBuilder("cmd", "/c", "cls");
 				// Start the process and inherit the input/output streams.
 				Process process = processBuilder.inheritIO().start();
@@ -616,7 +636,6 @@ public class Midterm_Project {
 		}
 	}
 
-
 	public static int getCurrentUserIndex(String currentUser) {
 		// Takes a string parameter.
 		for (int i = 0; i < userCount; i++) {
@@ -629,6 +648,36 @@ public class Midterm_Project {
 		}
 		// Returns -1 if user not found
 		return -1;
+	}
+
+	public static BigDecimal getRoundedValue(double numberToRound) {
+
+		BigDecimal decimalFormat = new BigDecimal(numberToRound);
+
+		return decimalFormat.setScale(2, RoundingMode.HALF_UP);
+
+	}
+
+	public static String getFormattedMonth(LocalDateTime date) {
+
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMMM");
+		return date.format(formatter);
+
+	}
+
+	public static String getFormattedTime(LocalDateTime date) {
+
+		DateTimeFormatter formatterOfTime = DateTimeFormatter.ofPattern("HH:mm:ss");
+		return date.format(formatterOfTime);
+
+	}
+	
+	public static int getCurrentDay(LocalDateTime date) {
+		return date.getDayOfMonth();
+	}
+	
+	public static int getCurrentYear(LocalDateTime date) {
+		return date.getYear();
 	}
 
 }
